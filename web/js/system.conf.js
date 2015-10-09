@@ -1,7 +1,7 @@
 /*global System*/
 
 System.config({
-    baseURL: '../',
+    baseURL: './',
 
     transpiler: 'babel',
 
