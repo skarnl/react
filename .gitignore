@@ -1,3 +1,5 @@
 node_modules/
 web/vendor/
 .idea/
+web/js/
+!web/js/system.conf.js
