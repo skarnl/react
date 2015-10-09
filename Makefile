@@ -15,6 +15,9 @@ symlinks:
 babel:
 	node_modules/babel/bin/babel.js $(pwd)/src/ --stage 1 --out-dir $(pwd)/web/js --modules system
 
+babel-watch:
+	node_modules/babel/bin/babel.js $(pwd)/src/ --stage 1 --out-dir $(pwd)/web/js --modules system --watch
+
 setup: npm bower symlinks babel
 
 
