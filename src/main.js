@@ -1,6 +1,3 @@
-import {doStep} from 'js/Step-01/Step';
-import {mixin} from 'js/Helper/mixin';
+import {doStep} from 'js/Step-02/Step';
 
 doStep();
-
-console.log(mixin);
