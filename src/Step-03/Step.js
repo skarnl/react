@@ -1,5 +1,6 @@
 import React from 'react';
 import Backbone from 'backbone';
+import {Listener} from 'js/Helper/Listener';
 
 class Person extends Backbone.Model {
     get defaults() {
@@ -13,20 +14,23 @@ class Person extends Backbone.Model {
     }
 }
 
-class Greeter extends React.Component {
+class ReactView extends React.Component {
     constructor(props) {
         super(props);
-    }
 
-    componentDidMount() {
-        console.log(this);
-        this.listenTo(this.props.person, 'change', function (model) {
-            this.forceUpdate();
-        }, this);
+        this.listener = new Listener();
     }
 
     componentWillUnmount() {
-        this.stopListening();
+        this.listener.stopListening();
+    }
+}
+
+class Greeter extends ReactView {
+    componentDidMount() {
+        this.listener.listenTo(this.props.person, 'change', function (model) {
+            this.forceUpdate();
+        }.bind(this));
     }
 
     setName() {
@@ -43,14 +47,12 @@ class Greeter extends React.Component {
     }
 }
 
-_.extend(Greeter.prototype, Backbone.Events);
-
 export function doStep() {
-    console.log('doStep v2');
+    console.log('doStep v3');
 
     let piet = new Person({
-            name: 'Piet'
-        });
+        name: 'Piet'
+    });
 
     window.person = piet;
 

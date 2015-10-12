@@ -7,6 +7,8 @@ class HelleWorld extends React.Component {
 }
 
 export function doStep() {
+    console.log('doStep v1');
+
     React.render(
         <HelleWorld />,
         document.body

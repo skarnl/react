@@ -1,3 +1,3 @@
-import {doStep} from 'js/Step-02/Step';
+import {doStep} from 'js/Step-03/Step';
 
 doStep();
