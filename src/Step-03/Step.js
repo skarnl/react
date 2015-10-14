@@ -26,6 +26,18 @@ class ReactView extends React.Component {
     }
 }
 
+class Input extends ReactView {
+    handleChange() {
+        this.props.onInputChange(this.refs.name.getDOMNode().value);
+    }
+
+    render() {
+        return (
+            <input placeholder="new name" ref="name" onChange={this.handleChange.bind(this)} />
+        );
+    }
+}
+
 class Greeter extends ReactView {
     componentDidMount() {
         this.listener.listenTo(this.props.person, 'change', function (model) {
@@ -33,15 +45,15 @@ class Greeter extends ReactView {
         }.bind(this));
     }
 
-    setName() {
-        this.props.person.set('name', this.refs.name.getDOMNode().value);
+    setName(name) {
+        this.props.person.set('name', name);
     }
 
     render() {
         return (
             <div>
                 <p>Hello {this.props.person.get('name')}!</p>
-                <input placeholder="new name" ref="name" onChange={this.setName.bind(this)} />
+                <Input  onInputChange={this.setName.bind(this)} />
             </div>
         );
     }
