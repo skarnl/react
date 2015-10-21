@@ -1,3 +1,3 @@
-import {doStep} from 'js/Step-03/Step';
+import {renderClock} from 'js/Clock/App';
 
-doStep();
+renderClock();
